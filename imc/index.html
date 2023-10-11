@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMC</title>
+    <script>
+        function calcular() {
+            let altura = document.getElementById("Altura").value;
+            let peso = document.getElementById("Peso").value;
+            if (altura == "") {
+                alert("Informe a sua altura!");
+            } else if (peso == "") {
+                alert("Informe o seu peso!");
+            } else {
+                let imc = (Number(peso) / (Number(altura) ** 2)).toFixed(2);
+                document.getElementById("IMC").value = imc;
+
+                if (imc < 17) {
+                    document.getElementById("grau").value = "Muito abaixo do peso.";
+                } else if (imc < 18.5) {
+                    document.getElementById("grau").value = "Abaixo do peso.";
+                } else if (imc < 25) {
+                    document.getElementById("grau").value = "Peso normal.";
+                } else if (imc < 30) {
+                    document.getElementById("grau").value = "Acima do peso."
+                } else if (imc < 35) {
+                    document.getElementById("grau").value = "Obesidade grau I";
+                } else if (imc <= 40) {
+                    document.getElementById("grau").value = "Obesidade grau II";
+                } else {
+                    document.getElementById("grau").value = "Obesidade grau III";
+                }
+            }
+        }
+        function limpar() {
+            document.getElementById("Altura").value = "";
+            document.getElementById("Peso").value = "";
+            document.getElementById("IMC").value = "";
+        }
+
+    </script>
+    <style>
+        .form {
+            width: 40vh;
+            color: rgb(150, 116, 160);
+            background-color: #eeeeee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        label {
+            border-radius: 10px;
+        }
+
+        div,
+        h1 {
+            text-align: center;
+        }
+
+        body {
+            color: #ddd;
+            background-color: rgb(150, 116, 160);
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form">
+        <h1>
+            Cálculo de IMC
+        </h1>
+
+        <form>
+            <div>
+                <label for="Altura">Altura</label>
+                <input type="number" name="" id="Altura">
+            </div>
+            <div>
+                <label for="Peso">Peso:</label>
+                <input type="number" name="" id="Peso">
+            </div>
+            <div>
+                <label for="IMC">IMC </label>
+                <input type="number" name="" id="IMC" disabled>
+            </div>
+            <div>
+                <label for="grau">Grau:</label>
+                <input type="text" name="" id="grau" disabled>
+            </div>
+            <div>
+                <input type="button" value="Calcular" onclick="calcular();">
+                <input type="button" value="Limpar" onclick="limpar();">
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

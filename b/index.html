@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documento</title>
+    <style>
+        body {
+            background-color: rgb(126, 163, 117);
+            border-radius: 8px;
+            border: solid 2px rgb(255, 255, 255);
+            margin-left: 40%;
+            margin-right: 40%;
+            margin-top: 15%;
+            text-align: center;
+            padding: 20px;
+        }
+        label{
+            color: rgb(255, 255, 255);
+        }
+        input{
+            border-radius: 8px;
+            border: none;
+        }
+        input :active{
+            border: none;
+        }
+        #resultado {
+            margin-top: 8px;
+            border: 2px solid rgb(255, 255, 255);
+            border-radius: 6px;
+        }
+
+        #button {
+            margin-top: 5px;
+        }
+        #tit{
+            color: rgb(255, 255, 255);
+        }
+    </style>
+
+    <script>
+
+        function click_calcular() {
+            let valorA = document.getElementById("valorA").value;
+            let valorB = document.getElementById("valorB").value;
+            let valorC = document.getElementById("valorC").value;
+            let coeficiente1;
+            let coeficiente2;
+
+            let delta = (valorB * valorB) - 4 * valorA * valorC;
+            if (valorA == 0) {
+                alert("Não é possivel calcular divisão por ZERO")
+            }
+            else if (delta < 0) {
+                alert("Para Delta negativo, não existem raízes reais.");
+            } else {
+
+                coeficiente1 = (-valorB + Math.sqrt(delta)) / (2 * valorA);
+                coeficiente2 = (-valorB - Math.sqrt(delta)) / (2 * valorA);
+
+                document.getElementById("resultado").innerHTML = `x1 = ${coeficiente1.toFixed(4).replace(".", ",")}<br>x2 = ${coeficiente2.toFixed(4).replace(".", ",")}`;
+            }
+        }
+        function click_limpar() {
+            document.getElementById("valorA").value = "";
+            document.getElementById("valorB").value = "";
+            document.getElementById("valorC").value = "";
+            document.getElementById("resultado").innerHTML = "";
+        }
+    </script>
+</head>
+</head>
+
+<body>
+    <h1 id="tit">
+        Equação de segundo grau:
+    </h1>
+
+    <form>
+        <div>
+            <label for="valorA">Valor A</label><br>
+            <input type="number" name="" id="valorA">
+        </div>
+        <div>
+            <label for="valorB">Valor B</label><br>
+            <input type="number" name="" id="valorB">
+        </div>
+        <div>
+            <label for="valorC">Valor C</label><br>
+            <input type="number" name="" id="valorC">
+        </div>
+        <div id="resultado">
+
+        </div>
+        <div>
+            <input id="button" type="button" value="Calcular" onclick="click_calcular();">
+            <input id="button" type="button" value="Limpar" onclick="click_limpar();">
+        </div>
+    </form>
+
+
+
+</body>
+
+</html>

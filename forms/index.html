@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calc Imc</title>
+    <style>
+        form{
+            align-items: center;
+        }
+    </style>
+    <script>
+
+        function click_calcular() {
+            let Peso = Number(document.getElementById("txtPeso").value);
+            let Altura = Number(document.getElementById("txtAltura").value);
+            if (isNaN(Peso) && isNaN(Altura)) {
+                alert("Informe apenas números")
+            } else {
+                if (Peso == "" || Altura == "") {
+                    alert("Informe o seu peso e a altura");
+                } else {
+                    let imc = Peso / (Altura * Altura);
+                    document.getElementById("txtImc").value = imc;
+                }
+            }
+
+        } function click_limpar() {
+            document.getElementById("txtpeso").value = "";
+            document.getElementById("txtAltura").value = "";
+            document.getElementById("txtImc").value = "";
+        }
+
+
+    </script>
+</head>
+
+<body>
+    <h1 id="tit">Calculadora de Imc</h1>
+
+    <form>
+        <div>
+            <label for="txtPeso">Peso</label>
+            <input type="number" name="" id="txtPeso">
+        </div>
+        <div>
+            <label for="txtAltura">Altura</label>
+            <input type="number" name="" id="txtAltura">
+        </div>
+        <div>
+            <label for="txtImc">Imc</label>
+            <input type="number" name="" id="txtImc" disabled>
+        </div>
+        <div>
+            <input type="button" value="Calcular" onclick="click_calcular();">
+        </div>
+    </form>
+</body>
+
+</html>
